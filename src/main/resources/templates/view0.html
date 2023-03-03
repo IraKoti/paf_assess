@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+</head>
+<body>
+    
+    <div>
+        <h2>Fund Transfer</h2>
+    </div>
+
+    <form data-th-action="@{/transfer}" data-th-object="${transfer}" method="post">
+        <div>
+            <h2>Order Delivery Details</h2>
+            <table>
+                <tr>
+                    <td align="right">From account: </td>
+                    <td>
+                        <select data-th-field="*{faccount}"> 
+                            <option data-th-each="i : ${listaccount}" data-th-value="${i.name}" data-th-text="|${i.name} (${i.accountId})|"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">To account: </td>
+                    <td>
+                        <select>
+                            <option data-th-each="i : ${listaccount}" data-th-value="${i.name}" data-th-text="|${i.name} (${i.accountId})|"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">Amount : </td>
+                    <td><input type="text"/></td>
+                </tr>
+                <tr>
+                    <td align="right">Comments : </td>
+                    <td><textarea rows="4" cols="30"></textarea></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">Transfer</button> 
+                    </td>
+                </tr>
+                <tr>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+
+
+</body>
+</html>
