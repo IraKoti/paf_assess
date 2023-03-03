@@ -14,7 +14,7 @@ public class Transfer {
     @Size(min=10, max=10, message="To Account must be 10 Characters")
     private String taccount;
 
-    @NegativeOrZero(message="Amount can't be 0 or negative")
+    //@NegativeOrZero(message="Amount can't be 0 or negative")
     @Min(value=10, message="Minimal amount transfer is $10")
     private Float amount;
 

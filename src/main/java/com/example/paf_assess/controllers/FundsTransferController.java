@@ -34,6 +34,7 @@ public class FundsTransferController {
         // System.out.println((fundsTransferSvc.findAll()).toString());
         // System.out.println("----------------index---------------");
         List<Account> results = fundsTransferSvc.findAll();
+        model.addAttribute("transfer",new Transfer());
         model.addAttribute("listaccount", results);
         return "view0";
         //return "view0";
@@ -41,13 +42,12 @@ public class FundsTransferController {
 
     @PostMapping(value = "/transfer")
     public String saveOrder(@Valid Transfer transfer, BindingResult bindResult,
-                Model model) {
-        model.addAttribute("transfer",new Transfer());
-        if(bindResult.hasErrors()){
-            
+                Model model, HttpServletResponse response) throws IOException{ 
+        if(bindResult.hasErrors()){   
+            List<Account> results = fundsTransferSvc.findAll();
+            model.addAttribute("listaccount", results);       
             return "view0";
         }
-
         return "view1";
     }
 

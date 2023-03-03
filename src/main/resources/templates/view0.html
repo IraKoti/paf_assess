@@ -20,32 +20,38 @@
                     <td align="right">From account: </td>
                     <td>
                         <select data-th-field="*{faccount}"> 
-                            <option data-th-each="i : ${listaccount}" data-th-value="${i.name}" data-th-text="|${i.name} (${i.accountId})|"></option>
+                            <option data-th-each="i : ${listaccount}" data-th-value="${i.accountId}" data-th-text="|${i.name} (${i.accountId})|"></option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td align="right">To account: </td>
                     <td>
-                        <select>
-                            <option data-th-each="i : ${listaccount}" data-th-value="${i.name}" data-th-text="|${i.name} (${i.accountId})|"></option>
+                        <select data-th-field="*{taccount}">
+                            <option data-th-each="i : ${listaccount}" data-th-value="${i.accountId}" data-th-text="|${i.name} (${i.accountId})|"></option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td align="right">Amount : </td>
-                    <td><input type="text"/></td>
+                    <td><input type="text" data-th-field="*{amount}"/></td>
                 </tr>
                 <tr>
                     <td align="right">Comments : </td>
-                    <td><textarea rows="4" cols="30"></textarea></td>
+                    <td><textarea rows="4" cols="30" data-th-field="*{comments}"></textarea></td>
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="2" align="right">
                         <button type="submit">Transfer</button> 
                     </td>
                 </tr>
                 <tr>
+                    <td  colspan="2">
+                        <span class="error" data-th-if="${#fields.hasErrors('faccount')}" data-th-errors="*{faccount}"></span><br>
+                        <span class="error" data-th-if="${#fields.hasErrors('taccount')}" data-th-errors="*{taccount}"></span><br>
+                        <span class="error" data-th-if="${#fields.hasErrors('amount')}" data-th-errors="*{amount}"></span><br>
+                        <span class="error" data-th-if="${#fields.hasErrors('comments')}" data-th-errors="*{comments}"></span><br>
+                    </td>
                 </tr>
             </table>
         </div>
